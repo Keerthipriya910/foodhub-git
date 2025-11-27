@@ -17,7 +17,7 @@ export default function RecipeDetails() {
 
   const fetchRecipeDetails = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/recipe");
+      const response = await axios.get("http://localhost:30022/recipe");
       const allRecipes = response.data;
       const foundRecipe = allRecipes.find(r => r.rid.toString() === rid);
       if (foundRecipe) {

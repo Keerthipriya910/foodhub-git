@@ -52,7 +52,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     axios
-      .post('http://localhost:8082/adminlogin', {
+      .post('http://localhost:30022/adminlogin', {
         username: formData.username,
         password: formData.password,
       })

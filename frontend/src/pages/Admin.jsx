@@ -34,7 +34,7 @@ export default function Admin() {
 
   const fetchRecipes = () => {
     axios
-      .get("http://localhost:8082/recipe")
+      .get("http://localhost:30022/recipe")
       .then((res) => {
         setRecipes(res.data);
         setFilteredRecipes(res.data);
@@ -48,8 +48,8 @@ export default function Admin() {
 
   const handleSubmit = () => {
     const request = isUpdating
-      ? axios.put("http://localhost:8082/update", formData)
-      : axios.post("http://localhost:8082/insert", formData);
+      ? axios.put("http://localhost:30022/update", formData)
+      : axios.post("http://localhost:30022/insert", formData);
 
     request
       .then((res) => {
@@ -82,7 +82,7 @@ export default function Admin() {
   const handleDelete = (rid) => {
     if (window.confirm("Are you sure you want to delete this recipe?")) {
       axios
-        .delete(`http://localhost:8082/delete`, { params: { rid } })
+        .delete(`http://localhost:30022/delete`, { params: { rid } })
         .then((res) => {
           alert(res.data);
           fetchRecipes();
