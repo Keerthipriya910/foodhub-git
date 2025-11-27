@@ -5,9 +5,12 @@ WORKDIR /app
 
 COPY mvnw .          
 COPY .mvn/ .mvn
-COPY pom.xml ./
+COPY pom.xml .
 
 COPY src ./src
+
+# Add this line to make mvnw executable
+RUN chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
@@ -17,6 +20,6 @@ FROM eclipse-temurin:21-jdk
 WORKDIR /app
 COPY --from=builder /app/target/*.jar app.jar
 
-EXPOSE 2000
+EXPOSE 8082
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
